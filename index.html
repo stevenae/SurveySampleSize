@@ -8,32 +8,24 @@
 </head>
 <body>
     <div class="container" id="main-page">
-        <h2>
-            <p>Calculating the required sample size for a survey requires that you pick a minimum difference (aka, "delta") between Yes / No responses to your question(s).
-            The best way to decide this delta is to ask yourself (or your stakeholders, or your boss),
-            <br><br><i>"What's a large-enough difference in responses that we'll actually make a decision?"</i>
-            <br><br>A standard for-profit industry delta is 7%. Each additional sample costs money, and a larger delta requires a lower sample size.
-            We'll build off of this <a href="http://www.google.com/insights/consumersurveys/view?survey=m7obdzk6ulwbe&question=2&filter=&rw=1" target="blank">example from Google Consumer Surveys</a>, fill in your own delta and question below:</p>
-        </h2>
-        <hr>
+        <div id="wrapdiv" style="text-align:center">
+            <h1>SurveySampleSize.com</h1>
+            <p>Pick a minimum difference between Yes / No responses to your question.
+            <br></p><h4><i>"What difference would be large enough to actually help us make a decision?"</i></h4>A larger delta requires a lower sample size.
+            Fill in your own delta below:</p>
         <form id="sampleSizeForm">
-            <p>We want to ask people the yes or no question, 
-                <textarea id="control_query" rows="2" cols="50">Is it worth it to pay more for a Mac than a PC with the same specs?</textarea>
-            </p>
-            <p>We want to run a survey, and we're going to act on those findings even if the delta from "yes" to "no" responses is only 
-                <textarea id="diff" rows="1" cols="1">7</textarea> percentage points
-            </p>
+            <h2>We will act if the difference is<br> 
+                <textarea id="diff" rows="1" cols="1">7</textarea> <br>percentage points (or greater)
+            </h2>
             <p><button type="submit" style="font-size:16px">What sample size do I need?</button></p>
         </form>
     </div>
+    </div>
 
-    <div class="result" id="result-page">
-        <h1 style="text-align:center">You will need:</h1>
-        <h3 style="text-align:center" id="sample-size"></h3>
-        <h2 style="text-align:center">Now the trick is <a href="http://en.wikipedia.org/wiki/Survey_sampling">getting your sampling right</a>!</h2>
-        <p style="text-align:center">
-            <button id="back-button">Calculate another</button>
-        </p>
+    <div class="result" id="result-page" style="text-align:center">
+        <h2 >You will need:</h2>
+        <h3  id="sample-size">n samples</h3>
+        <p><a href=http://github.com/stevenae/SurveySampleSize>Github</a></p>
     </div>
 
     <script>
@@ -121,18 +113,8 @@
             
             // Display the result
             document.getElementById('sample-size').textContent = sampleSize + " samples";
-            
-            // Show the result page and hide the main page
-            document.getElementById('main-page').style.display = 'none';
-            document.getElementById('result-page').style.display = 'block';
         });
 
-        // Back button handler
-        document.getElementById('back-button').addEventListener('click', function() {
-            // Show the main page and hide the result page
-            document.getElementById('main-page').style.display = 'block';
-            document.getElementById('result-page').style.display = 'none';
-        });
     </script>
 </body>
 </html>
